@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delligation</title>
+</head>
+
+
+<body>
+
+    <button onclick="redirect()">REDIRECT PAGES</button>
+    <!-- Event delegation allows us to handle events efficiently and simplifies event management by leveraging the event bubbling and capturing mechanisms provided by the DOM. -->
+    <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+
+
+    <script>
+
+        function redirect() {
+            //finding current page
+            console.log(window.location.href)
+            window.location.href = "index.html"
+        }
+
+
+        // Adding a click event listener to the parent element
+        const list = document.getElementById('myList');
+
+        /*
+        list.addEventListener('click', function (event) {
+            if (event.target.tagName === 'LI') {
+                // Handling the click event on the list items
+                console.log("clicked")
+                console.log('Clicked on:', event.target.textContent);
+            }
+        });
+        */
+
+        list.addEventListener('click', (e) => {
+            if (e.target.tagName === 'LI') {
+                console.log("click on", e.target.textContent)
+            }
+        })
+
+
+
+        /*
+        Event delegation is a technique in JavaScript where you attach a single event listener to a parent element instead of attaching individual event listeners to multiple child elements. By doing so, you can handle events that occur on the child elements through event bubbling or capturing.
+        
+        
+        In this example, we have an unordered list (<ul>) with three list items (<li>). Instead of attaching separate event listeners to each list item, we attach a single click event listener to the parent element, the <ul> element with the id myList.
+        
+        When a click event occurs within the <ul> element, the event will bubble up from the target element (e.g., the clicked list item) to its parent elements. The event listener on the <ul> element captures this event and handles it.
+        
+        Inside the event listener function, we check if the event target's tag name is 'LI', indicating that a list item was clicked. If it is, we log the text content of the clicked list item to the console.
+        
+        By using event delegation, we can handle clicks on any list item within the <ul> element without having to attach a separate event listener to each list item. This approach is particularly useful when dealing with dynamic content or a large number of elements, as it improves performance and reduces memory usage.
+        
+        Event delegation allows us to handle events efficiently and simplifies event management by leveraging the event bubbling aznd capturing mechanisms provided by the DOM.
+        */
+
+    </script>
+</body>
+
+</html>

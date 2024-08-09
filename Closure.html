@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        ///////////////////////////LEXICAL SCOPE//////////////////////////
+
+        // function init() {
+        //     var name = "Mozilla"; // name is a local variable created by init
+        //     function displayName() {
+        //         // displayName() is the inner function, that forms the closure
+        //         console.log(name); // use variable declared in the parent function
+        //     }
+        //     displayName();
+        // }
+        // init();
+
+        //every function have its scope
+        //function ke andar scope ko bhr access nhi kar pate
+
+        //outer ka scope == line  
+        /*
+                function outer() {
+                    let userName = "aman"
+                }
+                console.log(userName)//refrense error
+        
+                */
+
+
+        function outer() {
+            let userName = "aman"
+            function inner() {
+                console.log("inner", userName)
+            }
+            inner()
+        }
+        outer()
+        //  console.log("outer", userName) //inner aman
+
+
+        //function ke andar ko outer me access nhi 
+        //outer and inner function memory share karta 
+
+        //function ke andar ek function bna diya outer function ke sare variable access == >lexical scope
+
+
+        //function ke andar ek/do jitne bhi funtion ho un sabhi ko outer ka access milega
+
+        /*
+                function outer1() {
+                    let userName = "aman"
+                    console.log("fname", fname)// fname is not defined
+                    //chote bade ko share nhi bade se chote mang lee hai
+
+                    //child function se variable ko parent can not access
+        
+                    function inner2() {
+                        let fname = "aman mis"
+                        console.log("inner3", userName)
+                    }
+                    function inner3() {
+                        console.log("inner3", userName, fname)//fname is not defined
+                    }
+                    inner2()
+                    inner3()
+                }
+                console.log(outer1())
+                // console.log("outer", userName)
+        
+        
+                */
+
+
+        //outer function sabhi ko access to deta hai but outer ke andar 3/4 bna diya to wo share aapas me share nhi karega
+        //bhai bhai share nhi karega parent se sab access kar lega ==>outer() se
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        ///////CCCC/////////////LLLLL////////OOOO///////SSS////////UUUU////RRRR////EEEEE///UUUUU////////////////////
+
+        
+        //jb pura ka pura function hi return karate hai to kewal function hi return nhi uska pura scope ,lexical scope bhi return hota hai
+
+
+
+
+        function makeFunc() {
+            const name = "Mozilla";
+            function displayName() {
+                console.log(name);
+            }
+            return displayName;//function ko refrence hi as return kar diya
+        }
+
+        const myFunc = makeFunc();//yahna pr to makeFunc() ka scope chala gay
+        //yahna pr memory ka role aata h
+        myFunc();
+
+
+        //memory ka refrence role
+
+        //myFunc() bnaya displayName() ko return kiya to sirf display name nhi jayega uska outer function ka scope agar exist karta ha to uska bhi scope jayeg
+        
+        //pura lexical scope ja raha return se
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<!--Live example=================================================================================================================================================================================================================================================================================== example of closure -->
+
+
+
+<button id="green">GREEN</button>
+<button id="orange">ORANGE</button>
+<script>
+
+//button click pt background chnage
+
+/*
+document.getElementById("orange").onclick=function(){
+    document.body.style.backgroundColor="orange"
+}
+
+
+document.getElementById("green").onclick=function(){
+    document.body.style.backgroundColor="green"
+}
+*/
+
+//ab aise bar bar repeat nhi karna sahi 
+
+//hm click handeler bna lete hai
+
+/*
+function clickHnadler(color){
+    document.body.style.backgroundColor=`${color}`
+}
+*/
+
+//document.getElementById("orange").onclick= clickHnadler
+
+
+//yahna pr function ka refrense diya
+//function //refrense function ==  definition diya jata
+
+
+//document.getElementById("orange").onclick= clickHnadler("orange")
+
+//bina click kiya hi execute ho gaya
+
+//return me expect tha ki function milega but isme sidha execute hi
+
+//..change of definitons  of function
+
+
+function clickHnadler(color){
+ 
+
+ return function (){
+    document.body.style.backgroundColor= `${color}`
+    //closer ki wajah se color access ho raha
+}
+
+}
+
+document.getElementById("orange").onclick= clickHnadler("orange")
+
+document.getElementById("green").onclick= clickHnadler("green")
+
+
+
+//real world usecase 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

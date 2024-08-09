@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview questions last</title>
+    <style>
+        div {
+            padding: 50px;
+            border: 2px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>event bubling</h1>
+    <div id="gparent">Grand parent
+        <div id="parent"> Parent
+            <div id="child">
+                Child
+            </div>
+        </div>
+    </div>
+
+    <h1>event capturing</h1>
+    <div id="gparent1">Grand parent
+        <div id="parent1"> Parent
+            <div id="child1">
+                Child
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- jis div pr click karen wo hiden ho jaye -->
+    <h3>
+        Hide div after clicked
+    </h3>
+    <div id="div1">Grand parent
+        <div id="div2"> Parent
+            <div id="div3">
+                Child
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- <script src="interviewQuestion1.js"></script> -->
+    <!-- <script src="var-let-const.js"></script>
+    <script src="ArrayQuestion.js"></script> -->
+    <!-- <script src="cookie.js"></script>
+    <script src="localstorage.js"></script>
+    <script src="sessionstorage.js"></script> -->
+
+    <!-- <script src="protoype.js"></script> -->
+    <!-- <script src="map.js"></script> -->
+    <!-- <script src="prototype.js"></script> -->
+
+
+    <script src="this.js"></script>
+    <script>
+
+        //examples of event bubbling==> bottom to top
+
+        //child=>parent=>grandparent//////////
+
+        //callback me argument false dete hain
+        document.querySelector('#gparent').addEventListener('click', () => {
+            console.log("grandparent")
+        },
+            false);
+        document.querySelector('#parent').addEventListener('click', () => {
+            console.log("parent")
+        },
+            false);
+        document.querySelector('#child').addEventListener('click', (e) => {
+            console.log("child")
+        },
+            false);
+
+
+        /*
+                //agar bubbling se rokna ha jispar click kare wahi triger to
+        
+                //e.stopPropagation()
+        
+                document.querySelector('#gparent').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    console.log("grandparent")
+                },
+                    false);
+                document.querySelector('#parent').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    console.log("parent")
+                },
+                    false);
+                document.querySelector('#child').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    console.log("child")
+                },
+                    false);
+        
+                    */
+
+
+
+        ////////////////////////////////////////////////////event capturing  ==> top to bottom
+
+
+        //examples of event caturings
+
+        //callback me true dete hain
+
+
+        //grandparent=>parent=>child
+        document.querySelector('#gparent1').addEventListener('click', () => {
+            console.log("grandparent")
+        },
+            true);
+        document.querySelector('#parent1').addEventListener('click', () => {
+            console.log("parent")
+        },
+            true);
+        document.querySelector('#child1').addEventListener('click', () => {
+            console.log("child")
+        },
+            true);
+
+
+
+
+
+
+        document.querySelector('#div1').addEventListener('click', (e) => {
+            console.log("div1", e.target)//kis div pr click kiya wo deta ha
+            console.log("div1", e.target.tagName)//parent div ka nmae
+
+            // let removes = e.target.parentNode;
+            // removes.remove();
+            // removes.parentNode.removeChild(removes)
+        }, false);
+
+
+    </script>
+</body>
+
+</html>

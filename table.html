@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table examples</title>
+</head>
+
+<body>
+    <h3>Enter table number </h3>
+    <input type="text" id="num">
+    <button onclick="multiply()">Click</button>
+    <p id="result"></p>
+
+    <script>
+        function multiply() {
+
+            var n = document.getElementById("num").value;
+            var out = ""
+            for (var i = 0; i <= 10; i++) {
+                out = out + n + "*" + i + "=" + i * n + "<br>";
+            }
+            document.getElementById("result").innerHTML = out;
+
+        }
+    </script>
+
+</body>
+
+</html>
