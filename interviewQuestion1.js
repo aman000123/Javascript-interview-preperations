@@ -29,6 +29,7 @@ for (let i = 0; i <= 10; i++) {
         console.log(i)
     }, i * 1000)
 }
+
 //let se use karne pr 0,1,2,3,4,5----10 
 
 //The let keyword introduces block scope. Therefore, each iteration of the loop will have its own i variable, scoped to the block of the loop. As a result, when the setTimeout callbacks are executed, each one refers to the i value of its respective iteration, resulting in the output from 0 to 10 in order.
@@ -206,7 +207,7 @@ console.log(data1)//20
 
 //10-10=0, 10--10 = 20
 
-
+var ax = b = 3; console.log(typeof ax, typeof b);  //number,number
 
 //how js code execute
 

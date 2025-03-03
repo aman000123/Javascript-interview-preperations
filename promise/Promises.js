@@ -8,6 +8,7 @@
 
 //so promise bnanae ke liye new keyword  ka use karte hain
 
+
 //promise object represents the eventual completion or failure of an asynchronus operation and its resulting value
 
 //promise turant load nhi hoti
@@ -28,8 +29,6 @@
 
 //create promise
 //Promise() take call back
-
-
 
 const promise1 = new Promise(function (resolve, reject) {
 
@@ -85,7 +84,6 @@ new Promise(function (resolve, reject) {
 
 //create promise
 const promise3 = new Promise((resolve, reject) => {
-
     setTimeout(() => {
         console.log("Async task completes 3")
         resolve({ user: "aman", email: "aman@123gmail.com", age: 12 })//resolve me data bhi bhej sakte
@@ -98,12 +96,9 @@ const promise3 = new Promise((resolve, reject) => {
 promise3.then(function (data) {
     //access data of resolves
     //resolve ke andar jo bhi data hota .then() ke parameter me mil jata h  name matter nhi chahe data ya oters
-
     console.log(data)
 }
 )
-
-
 // Async task completes 3
 // { user: 'aman', email: 'aman@123gmail.com', age: 12 }
 
@@ -114,11 +109,8 @@ promise3.then(function (data) {
 
 //tackles error
 let p = new Promise((resolve, reject) => {
-
     setTimeout(() => {
-
         let error = false
-
         if (!error) {
             resolve({ username: "aman", age: 12, sub: "js" })
         }
@@ -368,9 +360,12 @@ const promiseOne = new Promise((resolve, reject) => setTimeout(resolve("hello re
 const promiseTwo = new Promise((resolve, reject) => setTimeout(reject, 4000));
 
 Promise.all([promiseOne, promiseTwo]).then((data) => console.log(data));
+
 // The above promises settled at the same time but one of them resolved and other one rejected. When you use .all method on these promises, the result will be short circuted by throwing an error due to rejection in second promise
 
+
 //when use .allSettled method then result of both the promises will be returned irrespective of resolved or rejected promise status without throwing any error.
+
 Promise.allSettled([promiseOne, promiseTwo]).then((data) => console.log(data));
 // //[
 //     { status: 'fulfilled', value: 'hello resolye' },

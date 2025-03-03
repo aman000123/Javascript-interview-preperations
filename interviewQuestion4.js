@@ -1,4 +1,5 @@
 
+console.log(null + 2)//2
 console.log(undefined + 2)//NaN
 
 // When null used in arithmetic operations, its value evaluates to 0.
@@ -86,7 +87,6 @@ baz()
 
 
 const person = { name: "aman" }
-
 function sayHi(age) {
     return `${this.name} is ${age}`
 }
@@ -390,6 +390,61 @@ add(1, 2, 3, 1)//SyntaxError: Duplicate parameter name not allowed in this conte
 
 
 
+
+//if use curley braces then need return 
+
+// 1. With curly braces {}:
+// If you use curly braces, you need to explicitly use the return keyword to return a value from the function.
+
+const addz = (a, b) => {
+    return a + b;  // You must use 'return'
+  };
+  console.log(addz(2, 3));  // Outputs: 5
+  
+
+
+//if use parenthesis then no need to return
+
+// With parentheses () (implicit return):
+
+// If you omit curly braces, the arrow function implicitly returns the value of the expression following the arrow =>. In this case, no return keyword is needed.
+
+const addv = (a, b) => (a + b);  // No need for 'return'
+console.log(addv(2, 3));  // Outputs: 5
+
+// Both are valid, but when you use curly braces, an explicit return is required. Without curly braces, the function will implicitly return the result.
+
+
+const add00 = (a, b) => {
+    a + b
+}
+
+console.log(add00(1, 2))//undefined
+
+
+const add0001 = (a, b) => (
+    a + b
+)
+
+console.log(add0001(1, 2))//3
+
+
+// In JavaScript, the return statement is needed to explicitly specify the value that a function should output or "return" to the caller. If a function does not include a return statement, it will return undefined by default.
+
+// Here’s why:
+
+// 1. Functions return something:
+// Every function in JavaScript returns something. If you don’t specify what it should return, it will return undefined by default.
+
+
+// 2. Explicit vs Implicit return:
+// When you use curly braces {} in a function body, JavaScript expects you to explicitly return a value using the return keyword.
+
+// If you don’t use curly braces (or if you use parentheses () for single expressions in arrow functions), JavaScript automatically returns the result of that expression (this is called an implicit return).
+
+
+// In summary, you need return when you use curly braces in a function because JavaScript does not automatically return the result unless you tell it to.
+
 //#####################################################################################################################################################################################################################
 // Is Javascript single-threaded?
 
@@ -399,6 +454,44 @@ add(1, 2, 3, 1)//SyntaxError: Duplicate parameter name not allowed in this conte
 
 // However, JavaScript also has asynchronous capabilities, which allow certain operations to be executed independently of the main execution thread. This is commonly achieved through mechanisms like callbacks, promises, async/await, and event listeners. These asynchronous features enable JavaScript to handle tasks such as fetching data, handling user input, and performing I/O operations without blocking the main thread, making it suitable for building responsive and interactive web applications.
 
+
+
+// Interviewer: You have 2 minutes. Explain the JavaScript Event Loop to me.
+
+// My answer: Challenge accepted, let’s go!
+
+
+// ➤ Single-Threaded Execution:
+// JavaScript is single-threaded, which means it can only execute one task at a time. This is managed by the call stack, where functions are executed one by one.
+
+
+// ➤ Call Stack: Think of the call stack as a stack of plates. Every time a function is called, a new plate (function) is added to the stack. When the function finishes, the plate is removed from the stack.
+
+
+// ➤ Web APIs: For asynchronous operations like `setTimeout`, DOM events, and HTTP requests, JavaScript relies on Web APIs provided by the browser. These operations are handled outside of the call stack.
+
+
+// ➤ Callback Queue: When an asynchronous operation completes, its callback is placed in the callback queue. This queue waits until the call stack is clear before pushing the next callback onto the stack.
+
+// ➤ Event Loop: The event loop is like a manager that constantly checks if the call stack is empty. When it is, the event loop takes the first callback from the callback queue and adds it to the call stack.
+
+// ➤ Microtasks Queue: There's also a microtasks queue for tasks like promises. This queue has higher priority than the callback queue. The event loop checks the microtasks queue first, ensuring these tasks are processed before other callbacks.
+
+// ➤ Priority Handling: To sum it up, the event loop first checks the microtasks queue. If it's empty, it moves to the callback queue. This ensures that critical tasks, like promises, are handled promptly.
+
+// That’s the JavaScript Event Loop.
+
+
+
+
+
+//###############################################################################
+
+
+
+
+
+// Get the solution here along with many JS interview questions:
 
 
 // Interviewer: You have 2 minutes. Explain the JavaScript Event Loop to me.
@@ -422,38 +515,88 @@ add(1, 2, 3, 1)//SyntaxError: Duplicate parameter name not allowed in this conte
 
 // That’s the JavaScript Event Loop.
 
-// hashtag#JavaScript Coding question for interviews.
-// From recent interview experience, I listed down all coding question which was asked to me and some more questions which might be helpful.
+// Time’s up!
 
-// 1. Write a function to reverse each word in a string.
-// 2. Write a function to find the number of characters in a string.
-// 3. Write a function to find the maximum value from an object.
-// 4. Create your own string method: `repeatify(3)` - the input string will be repeated three times.
-// 5. Write a JavaScript program to return the count of each character in a string.
-// 6. Write a JavaScript program to remove all occurrences of a specified character from a given string.
-// 7. Write a JavaScript program that takes two strings as input and returns true if they are anagrams of each other, otherwise returns false.
-// 8. Write a JavaScript program that converts a string to camelCase.
-// 9. Write a function to find the sum of all fruits in an array.
-// 10. Write a function to find two numbers which equal a given target sum.
-// 11. Write a function to find the shortest word in a list of strings.
-// 12. Write a function to separate palindrome numbers from an array.
-// 13. Write a function to return the count of characters in a string.
-// 14. Write a function to return the missing number from an array.
-// 15. Write a JavaScript program to group items of an array by category.
-// 16. Write a JavaScript program that takes an array of objects and returns an object containing the frequency of each property across all objects.
-// 17. How do you compare two objects in JavaScript, ensuring the identical order of keys?
-// 18. Collect books from an array of objects and return a collection of books as an array.
-// 19. Write a function that returns unique characters from a string.
-// 20. Write a function that takes an array of integers and returns the maximum product that can be obtained by multiplying any three numbers from that array.
-// 21. Write a function to move all zeros to the end of the array while maintaining the relative order of the non-zero elements.
-// 22. Write a function to check if a string is a palindrome, considering only alphanumeric characters and ignoring cases.
-// 23. Given a sorted array and a target value, write a function to return the index of the target value in the array using binary search. If the target is not found, return -1.
-// 24. Write a function to return the first non-repeating character in a string. If not available, return -1.
-// 25. Write a function to find the occurrence of each character in a given string.
-// 26. Write a function to flatten a nested array.
-// 27. Write a JavaScript program to remove duplicate elements from an array in different ways.
-// 28. Write a program to implement currying which gives the sum of three numbers.
-// 29. Write a program to generate a 6-digit random OTP.
-// 30. Write a program to find the intersection of two arrays.
 
-// Get the solution here along with many JS interview questions:
+
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+
+// 1️⃣ True or False:
+// "JavaScript is a single-threaded synchronous language."
+// 2️⃣ Is Node.js single-threaded or multi-threaded?
+// 3️⃣ JavaScript​: Interpreted or Compiled language?
+
+// Take a moment to think about your answers before scrolling down to see how you did!
+
+
+// Answer Time! 🎯
+
+// 1️⃣ True! JavaScript is a single-threaded, synchronous language.
+
+// 2️⃣ It's complicated! Node.js is generally single-threaded for synchronous tasks, but it can become multi-threaded when handling asynchronous operations, thanks to the libuv library and its default thread pool.
+
+// 3️⃣ Both! JavaScript is both an interpreted and compiled language, utilizing Just-In-Time (JIT) compilation.
+
+// I would have never grasped these concepts so thoroughly if it wasn't for Namaste Node.js! Throughout the course, I delved deep into the internal architecture of Node.js, explored how the libuv library works, and got hands-on experience with the event loop. I even learned about the intricacies of the V8 engine and much more.
+
+
+
+//###########################################################
+
+// Imagine JavaScript is like an amusement park, and the Event Loop is the ride that makes sure everyone has a good time, no matter how many people are waiting in line!
+
+// Here’s how it works:
+
+// 🌀𝗖𝗮𝗹𝗹 𝗦𝘁𝗮𝗰𝗸: Think of this as the main attraction—like the roller coaster! When you get on the ride (a function is called), you’re on the stack, zooming through loops and drops. But here’s the catch: only one person (or function) can be on the ride at a time. Everyone else has to wait in line.
+
+// 🎟️ 𝗘𝘃𝗲𝗻𝘁 𝗤𝘂𝗲𝘂𝗲: Now, while the roller coaster is in full swing, there’s another line of people waiting to get on smaller rides (asynchronous tasks like API calls, setTimeout, etc.). These folks are in the Event Queue, and they’re just chilling, waiting for their turn.
+
+// 🎡 𝗘𝘃𝗲𝗻𝘁 𝗟𝗼𝗼𝗽: Enter the Event Loop—a dedicated park employee who ensures everything runs smoothly. Once the main roller coaster (the Call Stack) is free, the Event Loop lets the next person in line (from the Event Queue) hop on the ride. This way, everyone gets a chance to enjoy the park without things getting too chaotic!
+
+// Understanding the Event Loop helps you avoid common pitfalls, like thinking setTimeout(fn, 0) will run immediately—it doesn’t
+
+
+
+// 𝗔 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲 𝗴𝘂𝗶𝗱𝗲 𝘁𝗼 𝗖𝗢𝗥𝗦!
+// 𝗪𝗵𝗮𝘁 𝗶𝘀 𝗖𝗢𝗥𝗦?
+// CORS stands for Cross-Origin Resource Sharing. It allows one site to make a request to another, despite the browser’s same-origin policy, which usually prevents such actions. CORS gives the server control over which clients can make requests and what types of requests are allowed.
+
+// 𝐇𝐨𝐰 𝐝𝐨𝐞𝐬 𝐂𝐎𝐑𝐒 𝐰𝐨𝐫𝐤?
+// 1. The client initiates a request.
+// 2. The browser adds CORS-specific headers.
+// 3. The server responds with headers to permit or block the request.
+// 4. If permitted, the browser delivers the response; if not, the request is rejected.
+
+// 𝗪𝗵𝗮𝘁 𝗶𝘀 𝘁𝗵𝗲 𝗼𝗿𝗶𝗴𝗶𝗻?
+// A request is a same-origin request when the client origin and the server origin are exactly the same. Otherwise, the request is a cross-origin request.
+ 
+// 𝗛𝗼𝘄 𝗖𝗢𝗥𝗦 𝘄𝗼𝗿𝗸𝘀 𝗼𝗻 𝘁𝗵𝗲 𝗰𝗹𝗶𝗲𝗻𝘁 𝘀𝗶𝗱𝗲?
+// 1. The client creates a request and specifies the URL, method, body, and headers.
+// 2. The browser validates headers, and a request object is created; if custom headers are included, a preflight request may be triggered.
+// 3. Credentials like cookies or authorization tokens are sent if included.
+// 4. The browser checks the server’s response and decides whether to pass it to the client. 
+
+// 𝗛𝗼𝘄 𝗖𝗢𝗥𝗦 𝘄𝗼𝗿𝗸𝘀 𝗼𝗻 𝘁𝗵𝗲 𝘀𝗲𝗿𝘃𝗲𝗿 𝘀𝗶𝗱𝗲?
+// 𝟭. 𝗕𝗿𝗼𝘄𝘀𝗲𝗿 𝗥𝗼𝗹𝗲 𝗶𝗻 𝗖𝗢𝗥𝗦:
+// • The browser adds information (e.g., the Origin header) to the request.
+// • It also interprets the server's response to decide whether to proceed with the request or return an error.
+// 𝟮. 𝗦𝗲𝗿𝘃𝗲𝗿-𝗦𝗶𝗱𝗲 𝗛𝗲𝗮𝗱𝗲𝗿𝘀:
+// • The server uses the access-control-allow-original header to determine if the request is allowed.
+// • The value can be a wildcard (*) or a specific origin (http://localhost:8080).
+// 𝟯. 𝗔𝗰𝗰𝗲𝗽𝘁𝗶𝗻𝗴 𝗼𝗿 𝗥𝗲𝗷𝗲𝗰𝘁𝗶𝗻𝗴 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝘀:
+// • If the Origin header matches an entry in Access-Control-Allow-Origin, the server accepts the request.
+// • If the origin does not match, the server can send a non-matching access-control-allow-original header.
+
+// 𝗙𝗼𝗿 𝘀𝗲𝗰𝘂𝗿𝗲 𝗖𝗢𝗥𝗦, 𝗿𝗲𝘀𝘁𝗿𝗶𝗰𝘁 𝗼𝗿𝗶𝗴𝗶𝗻𝘀, 𝗲𝗻𝗮𝗯𝗹𝗲 𝗰𝗿𝗲𝗱𝗲𝗻𝘁𝗶𝗮𝗹𝘀 𝗼𝗻𝗹𝘆 𝘄𝗵𝗲𝗻 𝗻𝗲𝗲𝗱𝗲𝗱 𝘄𝗶𝘁𝗵 𝗖𝗦𝗥𝗙 𝗽𝗿𝗼𝘁𝗲𝗰𝘁𝗶𝗼𝗻, 𝘀𝗽𝗲𝗰𝗶𝗳𝘆 𝗮𝗹𝗹𝗼𝘄𝗲𝗱 𝗺𝗲𝘁𝗵𝗼𝗱𝘀/𝗵𝗲𝗮𝗱𝗲𝗿𝘀, 𝗮𝗻𝗱 𝗰𝗮𝗰𝗵𝗲 𝗽𝗿𝗲𝗳𝗹𝗶𝗴𝗵𝘁 𝗿𝗲𝗾𝘂𝗲𝘀𝘁𝘀.
+
+// • 𝗔𝗰𝗰𝗲𝘀𝘀-𝗖𝗼𝗻𝘁𝗿𝗼𝗹-𝗔𝗹𝗹𝗼𝘄-𝗢𝗿𝗶𝗴𝗶𝗻: Use * for all origins or a whitelist for specific origins.
+// • 𝗔𝗰𝗰𝗲𝘀𝘀-𝗖𝗼𝗻𝘁𝗿𝗼𝗹-𝗔𝗹𝗹𝗼𝘄-𝗖𝗿𝗲𝗱𝗲𝗻𝘁𝗶𝗮𝗹𝘀: Set to true to allow cookies, ensure origin validation, and implement CSRF protection.
+// • 𝗔𝗰𝗰𝗲𝘀𝘀-𝗖𝗼𝗻𝘁𝗿𝗼𝗹-𝗔𝗹𝗹𝗼𝘄-𝗠𝗲𝘁𝗵𝗼𝗱𝘀: Present in preflight responses; indicates allowed HTTP methods (e.g., GET, POST, PUT, DELETE).
+// • 𝗔𝗰𝗰𝗲𝘀𝘀-𝗖𝗼𝗻𝘁𝗿𝗼𝗹-𝗔𝗹𝗹𝗼𝘄-𝗛𝗲𝗮𝗱𝗲𝗿𝘀: Present in preflight responses.
+
+// I hope that gave you a clear understanding of CORS to handle it effectively in the future.

@@ -1,10 +1,8 @@
-console.log("hello")
-
 
 
 ///////////////////////////////////////uses of call appply and bind
 
-//jb bhi ek object ke sath function ko attach kaise karna hai taki us function ke feture ko use 
+//jb bhi ek object ke sath function ko attach kaise karna hai taki us function ke feature ko use 
 //function ko reuse kar paye   ti call,apply,bind use hota 
 
 
@@ -246,3 +244,19 @@ greeting.call(employee, "hello", "what")//hello,undefined,undefined,what
 
 
 
+
+
+function fullName(email, number) {
+    return `my full name is ${this.fname} and last name is ${this.lname} my email is ${email},and mobile number is ${number}`
+}
+
+const obj2w = { fname: "dr atul", lname: "mishra ji" }
+
+console.log(fullName.call(obj2w, "aman123@gmail.com", 9695555))
+//my full name is dr atul and last name is mishra ji my email is aman123@gmail.com,and mobile number is 9695555
+
+console.log(fullName.apply(obj2w, ["aman123@gmail.com", 9695555]))
+//my full name is dr atul and last name is mishra ji my email is aman123@gmail.com,and mobile number is 9695555
+
+console.log(fullName.bind(obj2w, "aman123@gmail.com", 9695555)())
+//my full name is dr atul and last name is mishra ji my email is aman123@gmail.com,and mobile number is 9695555

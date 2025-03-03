@@ -16,9 +16,6 @@
 ///////////////////// An ulternative way for using callback is Promise
 
 
-
-
-
 //the function which accept a function as an arguments function is called callback fuction
 
 //the function which accept a function as an arguments or return a function is called higher ordered function
@@ -33,9 +30,6 @@
 // Event Handling
 
 // The callbacks are needed because javascript is an event driven language. That means instead of waiting for a response javascript will keep executing while listening for other events.
-
-
-
 
 //example
 
@@ -84,7 +78,34 @@ firstFunction(secondFunction);
 // Second function called
 
 
+// in async behaviour function is not wait for another but here wait
 
+// Great observation! Normally, JavaScript functions do not wait for each other unless explicitly instructed. However, in your example, firstFunction is not really waiting—it is simply executing secondFunction inside a callback after a delay.
+
+
+// Why Does It Seem Like firstFunction Waits?
+// JavaScript is asynchronous but non-blocking.
+// setTimeout schedules the execution of its callback after 3 seconds but does not block the rest of the program.
+// The function firstFunction itself finishes execution immediately after scheduling the timeout.
+// secondFunction is only executed when the timer completes.
+
+
+
+//synchronous call backs
+
+function firstFunction(second) {
+    console.log("first functions in synchronous callbacks")
+    second()
+}
+
+function secondFunction() {
+    console.log("second functions in synchronous callbacks")
+}
+
+
+firstFunction(secondFunction)
+
+// A synchronous callback would be executed immediately, without waiting for an asynchronous operation. Example:
 
 //synchronous callbacks  ==> callback which is execute imediately
 
@@ -99,11 +120,6 @@ function greet(name) {
 }
 
 heigherOrderFunction(greet)//hello you are welcome Aman mishra
-
-
-
-
-
 
 
 ////////////////////basics callbacks
@@ -152,7 +168,6 @@ greet('Alice', sayGoodbye);
 function complete(call) {
     const name = "Aman"
     call(name)
-
 }
 
 function main(name) {
@@ -160,7 +175,6 @@ function main(name) {
 }
 
 complete(main)
-
 
 
 
@@ -192,7 +206,10 @@ numbers.forEach((num) => {
 
 // The arrow function (num) => { console.log(num * 2); } is the callback function passed to forEach, defining what should happen with each element in the array.
 
-
+// Why is it a callback?
+// ✅ It is passed as an argument to forEach().
+// ✅ It is executed later for each element in the num array.
+// ✅ It is called by the forEach method internally.
 
 
 //////////////////asynchronous callbacks  ==> is a callback that is often used to continue or resume code axecution after an asynchronous aperation has completed

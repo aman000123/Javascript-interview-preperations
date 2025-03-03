@@ -102,8 +102,8 @@ console.log(!typeof name3 === false)//true
 
 const namee = "subscribe";
 const age = 21
-console.log(isNaN(namee))
-console.log(isNaN(age))
+console.log(isNaN(namee))//true
+console.log(isNaN(age))//false
 
 
 //modify this object

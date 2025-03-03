@@ -40,7 +40,7 @@ console.log(a11.length)//5
 
 
 
-//execptions of create array from new keyword
+//==========================execptions of create array from new keyword
 
 
 const a21 = new Array(5)
@@ -159,6 +159,9 @@ console.log(return111)//[ undefined, undefined, undefined, undefined ]
 
 
 
+const ac = [1, 2, 3, 4, 5, 6]
+const r = ac.map(item => item)
+console.log(r)//[ 1, 2, 3, 4, 5, 6 ]
 
 
 //copy array using spread opreator it allows you to create a new copy of array 

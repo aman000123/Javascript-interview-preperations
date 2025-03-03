@@ -19,12 +19,13 @@ const handleButtonClick = (index) => {
     ))
 }
 
-//jis button pr click karenfe use bg black hoga
+//jis button pr click karenge use bg black hoga
 
 // [...Array(5).keys()]: This part creates an array with 5 elements [0, 1, 2, 3, 4]. It uses the spread operator (...) to spread the array and the Array(5).keys() function to generate an iterator for the keys of the array.
 
 
 //package-lockjson --- library jo install kiya hai usak version manage --ye change nhi hota bcz version maintin karta ha
+
 //package== package details
 
 //index.html == browser read karta ha
@@ -37,7 +38,7 @@ const handleButtonClick = (index) => {
 
 //intercepter---bich me interruption karna axious ka intercepter karta
 
-//data ja raha to request 
+//data ja raha to request
 
 //intercepter bich me  req karte hain uske bich me check karta hai
 
