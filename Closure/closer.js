@@ -86,21 +86,36 @@ test1()
 //console.log("value of a",a)
 
 
-//ek function ke andar ki koi value ko function ke bahar eaccess nhi kar sakte
+// ✅ Outer function ki value inner function ke andar access ho sakti hai.
+// ✅ Inner function ki value directly outer function ya global scope me access nahi ho sakti.
+// ✅ Lexical scope tab define hota hai jab ek function apne parent scope se variables access karta hai.
+// ✅ Scope chain ke wajah se inner function bahar ke variables ko dekh sakta hai, par bahar ka code inner variables nahi dekh sakta.
 
-//yahi lexical scope hai
+// Ek Simple Example jo aapke 1 & 2 rules ko show kare:
 
-//koi bhi outer value function ke andar access ho sakti hai 
 
-//lekin andar ki value bahar access nhi ho sakti 
+function outerFunction() {
+    let outerVar = "I am outside"; // Outer variable
 
-// ye lexical scope bn jata hai uska
+    function innerFunction() {
+        let innerVar = "I am inside"; // Inner variable
+        console.log(outerVar); // ✅ Outer variable accessible (Rule 1)
+        console.log(innerVar);  // ✅ Inner variable accessible (Self scope)
+    }
 
-//outer value can access inside==1
+    innerFunction();
+    console.log(innerVar); // ❌ Error: innerVar is not defined (Rule 2)
+}
 
-//inner not accessible outside==2
+outerFunction();
 
-// 1 and 2 dono mile jaye to lexical scope bnta hai
+// Agar 1 aur 2 dono mil jaye to lexical scope banta hai?
+// Haan, lexical scope ka main concept yahi hai ki:
+
+// Inner function outer function ka scope "lexically" inherit karta hai. (Scope chain)
+// Outer function inner function ke variables ko access nahi kar sakta. (Encapsulation)
+// Lexical scope compile time par decide hota hai, execution ke time par nahi.
+
 
 
 
@@ -158,7 +173,7 @@ console.log("return a function", test00())////return a function [Function: inner
 
 let in1 = test00()
 
-//tset00() function call kar liya to inner12() ka lexical scope khatm ho gay
+//test00() function call kar liya to inner12() ka lexical scope khatm ho gay
 
 console.log("in1", in1())//1000
 
@@ -496,6 +511,22 @@ console.log(innin())
 //  closer.js:333== 305
 //  closer.js:334 ==307
 
+
+//------------------------------ What Happens Here?
+// testin() is called, creating the variable a = 300 inside its local scope.
+// testin() returns the inner function inner49 (but does not execute it yet).
+// Now, innin holds a reference to inner49.
+// Each time innin() is called:
+// a is modified (incremented).
+// a++ first returns the current value, then increments a.
+// Because of lexical scope & closure, inner49 retains access to a, even though testin() has already finished execution.
+// Key Takeaway
+// Parent function (testin) executes first and returns inner49.
+// Child function (inner49) is called later, but it still remembers the variable a due to closures.
+// This proves that closures allow functions to retain access to their lexical scope even after the parent function has completed execution.
+
+
+
 function add(x) {
     return function add1(y) {
         return x + y
@@ -517,7 +548,7 @@ let add10 = add5(10)
 // while in the lexical environment for add10, x is 10.
 
 
-console.log(add10)
+console.log(add10)//15
 
 /*
 // global scope
@@ -709,6 +740,14 @@ out()//bar
 // 𝐇𝐨𝐰 𝐂𝐥𝐨𝐬𝐮𝐫𝐞𝐬 𝐖𝐨𝐫𝐤
 // - When JavaScript executes a function, it establishes a scope for that function, encompassing all the variables declared within it. A closure is formed when an inner function maintains access to this scope after the outer function has returned.
 // - Essentially, the inner function retains a reference to the outer function's variables, enabling continued interaction with them.
+
+
+// 🔥 Conclusion (Simplified)
+// Jab JavaScript kisi function ko execute karta hai, toh us function ke liye ek naya scope create hota hai.
+// Jab function return hota hai, toh normally uska scope destroy ho jata hai.
+// Lekin agar ek inner function return ho raha hai, aur uske paas parent function ke variables ka access hai, toh wo closure banata hai.
+// Closures ka use hum private variables, event handlers, and asynchronous programming me karte hain.
+
 
 // 𝐁𝐞𝐧𝐞𝐟𝐢𝐭𝐬 𝐨𝐟 𝐂𝐥𝐨𝐬𝐮𝐫𝐞𝐬
 // 1. Encapsulation

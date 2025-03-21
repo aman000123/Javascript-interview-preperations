@@ -1,6 +1,10 @@
-const arx = [1, 2, 3, 4]
-const copyArx = [...arx]
-console.log(copyArx)
-copyArx[2] = 12
-console.log(copyArx)
-console.log(arx)
+function test00() {
+    let a = 1000
+
+    return function inner12() {
+        return a
+    }
+
+}
+
+console.log("return a function", test00())////return a function [Function: inner12]

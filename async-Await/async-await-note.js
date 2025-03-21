@@ -26,6 +26,8 @@
 
 // Note: The purpose of async/await is to simplify the syntax necessary to consume promise-based APIs. The behavior of async/await is similar to combining generators and promises.
 
+
+
 // Async functions always return a promise. If the return value of an async function is not explicitly a promise, it will be implicitly wrapped in a promise.
 
 
@@ -96,6 +98,7 @@ runProcess();
 
 
 // Why Use the async / await Syntax ?
+
 //     The async / await syntax enables you to handle promises without using.then() and.catch() method chaining, which also removes the need for nested callbacks.
 
 // This benefit is significant when you have a complex process after the promise is settled.
@@ -134,3 +137,17 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 
 
 // By using the async/await syntax, you reduce the need for method chaining and nested callbacks. This impact the readability of your code, especially when you have nested code like if/else and a for loop block.
+
+
+
+
+
+
+//------------------------------------->>>>>>>>>>>>> Benefits of Using async Function
+// The async function syntax is more readable than using a promise chain or a callback function.
+// The code is more readable than using a callback or a promise.
+// Error handling is simpler.
+// Debugging is easier.
+
+
+// Note: These two keywords async/await were introduced in the newer version of JavaScript (ES8). Some older browsers may not support the use of async/await. To learn more, visit JavaScript async/await browser support.

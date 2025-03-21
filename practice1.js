@@ -1,15 +1,11 @@
-(async function () {
-    try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-        const json = await response.json();
-        if (json.userId == 1) {
-            json.completed == false;
-        } else {
-            json.completed == true;
-        }
-        console.log(json);
-    } catch (error) {
-        console.log(error);
+function add(x) {
+    return function add1(y) {
+        console.log(x, y)
+        return x + y
     }
-})();
+}
 
+let add5 = add(5)
+let add10 = add5(10)
+
+console.log(add10)
